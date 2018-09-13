@@ -1,0 +1,230 @@
+<grupo>
+<pregunta>
+<tipo>iniciar agrupacion</tipo>
+<idpregunta>/^info1^/</idpregunta>
+<etiqueta>/^agrupacion 1^/</etiqueta>
+</pregunta>
+
+<pregunta>
+<tipo>texto</tipo>
+<idpregunta>/^nombre^/</idpregunta>
+<etiqueta>/^cual es tu nombre?^/</etiqueta>
+<parametro>/^cad_min=5 cad_fila= 1^/</parametro>
+<requeridomsn>/^ingrese un nombre^/</requeridomsn>
+<requerido>/^verdadero^/</requerido>
+</pregunta>
+
+<pregunta>
+<tipo>fecha</tipo>
+<idpregunta>/^hoyes^/</idpregunta>
+<etiqueta>/^que fecha es hoy?^/</etiqueta>
+<predeterminado>/^hoy()^/</predeterminado>
+</pregunta>
+
+<pregunta>
+<tipo>nota</tipo>
+<idpregunta>/^nota_dato^/</idpregunta>
+<etiqueta>/^se llenara dos arboles binarios^/</etiqueta>
+</pregunta>
+
+<pregunta>
+<tipo>finalizar agrupacion</tipo>
+<idpregunta>/^info1^/</idpregunta>
+<etiqueta></etiqueta>
+</pregunta>
+</grupo>
+
+<grupo>
+<pregunta>
+<tipo>iniciar agrupacion</tipo>
+<idpregunta>/^info2^/</idpregunta>
+<etiqueta>/^agrupacion 2^/</etiqueta>
+</pregunta>
+
+<pregunta>
+<tipo>nota</tipo>
+<idpregunta>/^arbol1^/</idpregunta>
+<etiqueta>/^se incio la instancia del primer arbol?^/</etiqueta>
+<codigo_post>/^abo1 = nuevo arbolbinario();^/</codigo_post>
+</pregunta>
+
+<ciclo>
+<pregunta>
+<tipo>iniciar ciclo</tipo>
+<idpregunta>/^llenar1^/</idpregunta>
+<etiqueta>/^ciclo arbol 1^/</etiqueta>
+</pregunta>
+
+<pregunta>
+<tipo>entero</tipo>
+<idpregunta>/^insertar1^/</idpregunta>
+<etiqueta>/^dame un numero @{color: #ffff00, tam:15, negrilla }: { mayor }@ a 1 
+y @{color: #ffff00, tam:15, negrilla }: { menor }@ a 20^/</etiqueta>
+<restringir>/^. >= 1 && .. <= 20^/</restringir>
+<requerido>/^verdadero^/</requerido>
+<codigo_post>/^abo1.insertar (@);^/</codigo_post>
+</pregunta>
+
+<pregunta>
+<tipo>finalizar ciclo</tipo>
+<idpregunta>/^llenar1^/</idpregunta>
+<etiqueta></etiqueta>
+</pregunta>
+</ciclo>
+
+<pregunta>
+<tipo>finalizar agrupacion</tipo>
+<idpregunta>/^info2^/</idpregunta>
+<etiqueta></etiqueta>
+</pregunta>
+</grupo>
+
+<grupo>
+<pregunta>
+<tipo>iniciar agrupacion</tipo>
+<idpregunta>/^info3^/</idpregunta>
+<etiqueta>/^agrupacion 3^/</etiqueta>
+</pregunta>
+
+<pregunta>
+<tipo>nota</tipo>
+<idpregunta>/^arbol2^/</idpregunta>
+<etiqueta>/^se incio la instancia del segundo arbol^/</etiqueta>
+<codigo_post>/^abo2 = nuevo arbolbinario();^/</codigo_post>
+</pregunta>
+
+<ciclo>
+<pregunta>
+<tipo>iniciar ciclo</tipo>
+<idpregunta>/^llenar2^/</idpregunta>
+<etiqueta></etiqueta>
+</pregunta>
+
+<pregunta>
+<tipo>rango</tipo>
+<idpregunta>/^insertar2^/</idpregunta>
+<etiqueta>/^dame un numero @{color: #ffff00, tam:15, negrilla }: { mayor }@ a 20
+y @{color: #ffff00, tam:15, negrilla }: { menor }@ a 30^/</etiqueta>
+<parametro>/^iniciar =20 finalizar= 30^/</parametro>
+<requerido>/^verdadero^/</requerido>
+<codigo_post>/^abo2.insertar (@);^/</codigo_post>
+</pregunta>
+
+<pregunta>
+<tipo>finalizar ciclo</tipo>
+<idpregunta>/^llenar2^/</idpregunta>
+<etiqueta></etiqueta>
+</pregunta>
+</ciclo>
+
+<pregunta>
+<tipo>finalizar agrupacion</tipo>
+<idpregunta>/^info3^/</idpregunta>
+<etiqueta></etiqueta>
+</pregunta>
+</grupo>
+
+<grupo>
+<pregunta>
+<tipo>iniciar agrupacion</tipo>
+<idpregunta>/^impresion^/</idpregunta>
+<etiqueta>/^salida de resultados^/</etiqueta>
+</pregunta>
+
+<ciclo>
+<pregunta>
+<tipo>iniciar ciclo</tipo>
+<idpregunta>/^llenar3^/</idpregunta>
+<etiqueta></etiqueta>
+</pregunta>
+
+<pregunta>
+<tipo>selecciona_uno elegir</tipo>
+<idpregunta>/^impre_1^/</idpregunta>
+<etiqueta>/^que arbol desea imprimir: 
+1 - imprimir el arbol 1
+2 - imprimir el arbol 2^/</etiqueta>
+</pregunta>
+
+<pregunta>
+<tipo>nota</tipo>
+<idpregunta>/^imprea^/</idpregunta>
+<etiqueta>/^se imprimira el arbol #[impre_1]^/</etiqueta>
+<aplicable>/^#[impre_1] = "a1"^/</aplicable>
+<codigo_post>/^imprimir ("preorden: arbol " + #[impre_1]);
+abo1.imprimirpre ();^/</codigo_post>
+</pregunta>
+
+<pregunta>
+<tipo>nota</tipo>
+<idpregunta>/^impreb^/</idpregunta>
+<etiqueta>/^se imprimira el arbol #[impre_1]^/</etiqueta>
+<aplicable>/^#[impre_1] = "a2"^/</aplicable>
+<codigo_post>/^imprimir ("preorden: arbol " + #[impre_1]);
+abo2.imprimirpre ();^/</codigo_post>
+</pregunta>
+
+<pregunta>
+<tipo>nota</tipo>
+<idpregunta>/^error^/</idpregunta>
+<etiqueta>/^no existe la opcion #[impre_1]^/</etiqueta>
+<aplicable>/^#[impre_1] >= "a1" && #[impre_1] <= "a2"^/</aplicable>
+</pregunta>
+
+<pregunta>
+<tipo>finalizar ciclo</tipo>
+<idpregunta>/^llenar3^/</idpregunta>
+<etiqueta></etiqueta>
+</pregunta>
+</ciclo>
+
+<pregunta>
+<tipo>finalizar agrupacion</tipo>
+<idpregunta>/^impresion^/</idpregunta>
+<etiqueta></etiqueta>
+</pregunta>
+</grupo>
+
+<l_opcion>
+<nombre_lista>/^elegir^/</nombre_lista>
+<nombre>/^a1^/</nombre>
+<etiqueta>/^arbol 1^/</etiqueta>
+</l_opcion>
+
+<l_opcion>
+<nombre_lista>/^elegir^/</nombre_lista>
+<nombre>/^a2^/</nombre>
+<etiqueta>/^arbol 2^/</etiqueta>
+</l_opcion>
+
+<l_opcion>
+<nombre_lista>/^elegir2^/</nombre_lista>
+<nombre>/^a3^/</nombre>
+<etiqueta>/^arbol^/</etiqueta>
+</l_opcion>
+
+<l_opcion>
+<nombre_lista>/^elegir2^/</nombre_lista>
+<nombre>/^a4^/</nombre>
+<etiqueta>/^arbol 4^/</etiqueta>
+</l_opcion>
+
+<l_config>
+<idform>/^impor_arbol^/</idform>
+<importar>/^importar arbolbinario.xform^/</importar>
+</l_config>
+
+<l_config>
+<idform>/^codigo1^/</idform>
+<codigo_principal>/^abo1 = nuevo arbol();
+abo2 = nuevo arbol();^/</codigo_principal>
+<codigo_global>/^arbol abo1;
+arbol abo2;^/</codigo_global>
+</l_config>
+
+<l_config>
+<titulo_formulario>/^arbol binario^/</titulo_formulario>
+<idform>/^abb^/</idform>
+<estilo>/^grupo^/</estilo>
+</l_config>
+

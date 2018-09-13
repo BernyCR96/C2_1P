@@ -1,0 +1,482 @@
+/* Respaldo hecho hasta creacion de arbol completo */
+
+options {
+  LOOKAHEAD = 1;
+  CHOICE_AMBIGUITY_CHECK = 2;
+  OTHER_AMBIGUITY_CHECK = 1;
+  STATIC = false;
+  DEBUG_PARSER = false;
+  DEBUG_LOOKAHEAD = false;
+  DEBUG_TOKEN_MANAGER = false;
+  ERROR_REPORTING = true;
+  JAVA_UNICODE_ESCAPE = false;
+  UNICODE_INPUT = false;
+  IGNORE_CASE = false;
+  USER_TOKEN_MANAGER = false;
+  USER_CHAR_STREAM = false;
+  BUILD_PARSER = true;
+  BUILD_TOKEN_MANAGER = true;
+  SANITY_CHECK = true;
+  FORCE_LA_CHECK = false;
+}
+
+PARSER_BEGIN(comp)
+package olc2.JAVACC;
+import java.io.*;
+public class comp 
+{
+	/*public static void main( String[] args )throws ParseException, Exception
+	{
+		try
+		{		
+     		comp analizador = new comp( System.in ) ;
+			analizador.Programa();
+			System.out.println("\tAnalizador ha terminado.");			
+		}
+		catch(ParseException e)
+		{
+			System.out.println(e.getMessage());
+			System.out.println("\tAnalizador ha terminado.");
+		}
+	}*/
+}
+PARSER_END(comp)
+
+TOKEN : 
+{ 
+	  <ASIGNACION : "="> //1
+	| <PLUS : "+" >  //2
+	| <MINUS:"-"> //3
+	| <MULTIPLY:"*">  //4
+	| <DIVIDE:"/"> //5
+	| <INCR: "++" > //6
+	| <DECR: "--" > //7
+	
+}
+TOKEN:
+{
+	  <PR_PREGUNTA: "<pregunta>"> //8
+	|  <PR_Fin_PREGUNTA: "</pregunta>"> //8
+	| <PR_TIPO: "<tipo>"> //9
+	| <PR_Fin_TIPO: "</tipo>"> //9
+	| <PR_IDPREGUNTA: "<idpregunta>"> //10
+	| <PR_Fin_IDPREGUNTA: "</idpregunta>"> //10
+	| <PR_ETIQUETA: "<etiqueta>"> //11
+	| <PR_Fin_ETIQUETA: "</etiqueta>"> //11
+	| <PR_SUGERIR: "<sugerir>"> //12
+	| <PR_Fin_SUGERIR: "</sugerir>"> //12
+	| <PR_CODIGO_PRE: "<codigo_pre>" >  //13
+	| <PR_Fin_CODIGO_PRE: "</codigo_pre>" >  //13
+	| <PR_CODIGO_POST: "<codigo_post>" > //14
+	| <PR_Fin_CODIGO_POST: "</codigo_post>" > //14
+	
+	| <PR_RESTRINGIR:"<restringir>" > //16
+	| <PR_Fin_RESTRINGIR:"</restringir>" > //16
+	
+	| <PR_RESTRINGIRMSN:"<restringirmsn>" > //16
+	| <PR_Fin_RESTRINGIRMSN:"</restringirmsn>" > //16
+	| <PR_REQUERIDO:"<requerido>" > //17
+	| <PR_Fin_REQUERIDO:"</requerido>" > //17
+	| <PR_REQUERIDOMSN:"<requeridomsn>" > //18
+	| <PR_Fin_REQUERIDOMSN:"</requeridomsn>" > //18
+	| <PR_PREDETERMINADO:"<predeterminado>" > //19
+	| <PR_Fin_PREDETERMINADO:"</predeterminado>" > //19
+	| <PR_APLICABLE:"<aplicable>" > //20
+	| <PR_Fin_APLICABLE:"</aplicable>" > //20
+	| <PR_LECTURA:"<lectura>" > //21
+	| <PR_Fin_LECTURA:"</lectura>" > //21
+	| <PR_CALCULO:"<calculo>" > //22
+	| <PR_Fin_CALCULO:"</calculo>" > //22
+	| <PR_REPETICION:"<repeticion>" > //23
+	| <PR_Fin_REPETICION:"</repeticion>" > //23
+	| <PR_MULTIMEDIA:"<multimedia>" > //24
+	| <PR_Fin_MULTIMEDIA:"</multimedia>" > //24
+	| <PR_APARIENCIA:"<apariencia>" > //25
+	| <PR_Fin_APARIENCIA:"</apariencia>" > //25
+	| <PR_PARAMETRO:"<parametro>" > //26
+	| <PR_Fin_PARAMETRO:"</parametro>" > //26
+	| <PR_GRUPO:"<grupo>" > //26
+	| <PR_Fin_GRUPO:"</grupo>" > //26
+	| <PR_CICLO:"<ciclo>" > //26
+	| <PR_Fin_CICLO:"</ciclo>" > //26
+	| <PR_L_OPCION:"<l_opcion>" > //26
+	| <PR_Fin_OPCION:"</l_opcion>" > //26
+	| <PR_L_CONFI:"<l_config>" > //26
+	| <PR_Fin_CONFI:"</l_config>" > //26
+	| <PR_NOMBRELISTA:"<nombre_lista>" > //26
+	| <PR_Fin_NOMBRELISTA:"</nombre_lista>" > //26
+	| <PR_NOMBRE:"<nombre>" > //26
+	| <PR_Fin_NOMBRE:"</nombre>" > //26
+	| <PR_TITULOFORM:"<titulo_formulario>" > //26
+	| <PR_Fin_TITULOFORM:"</titulo_formulario>" > //26
+	| <PR_IDFORM:"<idform>" > //26
+	| <PR_Fin_IDFORM:"</idform>" > //26
+	| <PR_ESTILO:"<estilo>" > //26
+	| <PR_Fin_ESTILO:"</estilo>" > //26
+	| <PR_IMPORTAR:"<importar>" > //26
+	| <PR_Fin_IMPORTAR:"</importar>" > //26
+	| <PR_CODIGO_PRINCIPAL:"<codigo_principal>" > //26
+	| <PR_Fin_CODIGO_PRINCIPAL:"</codigo_principal>" > //26
+	| <PR_CODIGO_GLOBAL:"<codigo_global>" > //26
+	| <PR_Fin_CODIGO_GLOBAL:"</codigo_global>" > //26
+
+
+
+
+
+	| <PR_texto:"texto" > 
+	| <PR_entero:"entero" > 
+	| <PR_decimal:"decimal" > 
+	| <PR_rango:"rango" > 
+	| <PR_condicion:"condicion" > 
+	| <PR_fecha:"fecha" > 
+	| <PR_hora:"hora" > 
+	| <PR_fechahora:"fechahora" > 
+	| <PR_seleccion_uno:"selecciona_uno" > 
+	| <PR_seleccion_multiple:"selecciona_multiple" > 
+	| <PR_nota:"nota" > 
+	| <PR_fichero:"fichero" > 
+	| <PR_calcular:"calcular" > 
+	| <PR_inicio_grupo:"iniciar agrupacion" > 
+	| <PR_finalizar_grupo:"finalizar agrupacion" > 
+	| <PR_iniciar_ciclo:"iniciar ciclo" > 
+	| <PR_finalizar_ciclo:"finalizar ciclo" > 
+	
+}
+TOKEN:
+{
+	 	<PR_MAYORQUE: ">" > //26
+		| <PR_MENORQUE: "<" > //27
+	
+}
+TOKEN:
+{
+	  <EQ: "==" > //36
+	| <LE: "<=" > //37
+	| <GE: ">=" > //38
+	| <NE: "!=" > //39
+	| <OR: "||" > //40
+	| <AND: "&&"> //41
+	 
+	
+}
+
+TOKEN:
+{
+	 <IDENTIFIER : ["a"-"z","A"-"Z"](["a"-"z","A"-"Z","0"-"9","_"])*>  //42
+	
+}
+
+SKIP : 
+{ 
+	" "|"\n" | "\r" | "\r\n" | "\t"
+}
+
+Nodo Formulario():
+{
+Nodo nuevo = new Nodo("Formulario","");
+Nodo val;
+
+}
+{
+	 (val = CuerpoForm() { nuevo.setListaHojas(val);} )*{return nuevo;}
+}
+
+Nodo CuerpoForm():
+{
+Nodo nuevo = new Nodo("CuerpoForm","");
+Nodo nuevo3 = new Nodo("GRUPO_PADRE","");
+Nodo nuevo2 = new Nodo("CICLO_PADRE","");
+Nodo nuevo1 = new Nodo("PREGUNTA","");
+Nodo nuevo4 =new Nodo("L_CONFIG ","");
+int contadorP =0;
+Nodo val=null;
+}
+{
+	(<PR_PREGUNTA>(val = Cuerpo(nuevo3) {nuevo1.setListaHojas(val); } )*<PR_Fin_PREGUNTA>) {return nuevo1;}
+	|(<PR_GRUPO>(val = CuerpoGrupo(nuevo3){nuevo3.setListaHojas(val); })*<PR_Fin_GRUPO>) {return nuevo3;}
+	|(<PR_CICLO>(val = CuerpoCiclo(nuevo2){nuevo2.setListaHojas(val); })*<PR_Fin_CICLO>){return nuevo2;}
+	|(<PR_L_OPCION>(val = Cuerpo_Opcion())*<PR_Fin_OPCION>){return val;}	
+	|val = config(){return val;}
+	
+	
+
+}
+
+Nodo config():
+{
+	Nodo nuevo4 =new Nodo("L_CONFIG ","");
+	Nodo val = null;
+}
+{
+	(<PR_L_CONFI>(val = Cuerpo_Config(){nuevo4.setListaHojas(val);})*<PR_Fin_CONFI>){return nuevo4;}		
+}
+
+
+
+
+Nodo CuerpoGrupo(Nodo padre):
+{
+	Nodo nuevo = new Nodo("GRUPO","");
+	Nodo nuevo1 = new Nodo("CICLO","");
+	Nodo val = null;
+}
+{
+	<PR_PREGUNTA>(val = Cuerpo(padre) )*<PR_Fin_PREGUNTA> {return val;}
+	|(<PR_GRUPO>(val = CuerpoGrupo(nuevo){ nuevo.setListaHojas(val);})*<PR_Fin_GRUPO>) {return nuevo;}
+	|(<PR_CICLO>(val = CuerpoCiclo(nuevo1){ nuevo1.setListaHojas(val);})*<PR_Fin_CICLO>){return nuevo1;}
+	
+	
+}
+
+Nodo CuerpoCiclo(Nodo padre):
+{
+	Nodo nuevo1 = new Nodo("CICLO","");
+	Nodo nuevo = new Nodo("GRUPO","");
+	Nodo val = null;
+
+}
+{
+	<PR_PREGUNTA>(val = Cuerpo(padre) )*<PR_Fin_PREGUNTA> {return val;}
+	|(<PR_GRUPO>(val = CuerpoGrupo(nuevo){ nuevo.setListaHojas(val);})*<PR_Fin_GRUPO>) {return nuevo;}
+	|(<PR_CICLO>(val = CuerpoCiclo(nuevo1){ nuevo1.setListaHojas(val);})*<PR_Fin_CICLO>) {return nuevo1;}
+	
+	
+	
+}
+
+Nodo Cuerpo(Nodo grupo):
+{
+	Nodo t=new Nodo("L_ENCABEZADO ","");
+	Nodo val;
+	String cadena ="";
+	String aux = "";
+	String ID_pregunta = "";
+	boolean asigGrupo = false;
+	boolean asigCiclo = false;
+}
+{
+	(<PR_TIPO>  val = TIPO() {	t.setListaHojas(val); 
+		if (val.isGrupo() == true) {
+			asigGrupo = true;
+		}
+		if (val.isCiclo() == true) {
+			asigCiclo = true;
+		}
+	}  <PR_Fin_TIPO> 
+	<PR_IDPREGUNTA> (cadena = Etiqueta(grupo, "") )* 
+	{val = new Nodo("idpregunta", cadena); 
+	 t.setListaHojas(val);
+	 t.setValor(cadena);
+	 ID_pregunta = cadena;
+	 if (asigGrupo == true) {
+		 grupo.setValor(cadena);
+	 }
+	 if (asigCiclo == true) {
+		grupo.setValor(cadena);
+	}
+	}
+	<PR_Fin_IDPREGUNTA>
+	<PR_ETIQUETA>(cadena = Etiqueta(grupo, "") )* 
+	{val = new Nodo("etiqueta", cadena);  t.setListaHojas(val);}
+	<PR_Fin_ETIQUETA>)
+
+	(val =  L_Opcionales(grupo, ID_pregunta)  {t.setListaHojas(val);})*
+	{
+		System.out.println("entre4");return t;
+	}
+}
+
+Nodo TIPO():
+{
+	Nodo nuevo;
+ Token val;
+Token t ;
+
+}
+{
+
+	t = <PR_texto> {return nuevo = new Nodo("Tipo",t.image) ;}
+	|t =<PR_entero> {return nuevo = new Nodo("Tipo",t.image) ;}
+	|t =<PR_decimal> {return nuevo = new Nodo("Tipo",t.image) ;}
+	|t =<PR_rango> {return nuevo = new Nodo("Tipo",t.image) ;}
+	|t =<PR_condicion> {return nuevo = new Nodo("Tipo",t.image) ;}
+	|t =<PR_fecha> {return nuevo = new Nodo("Tipo",t.image) ;}
+	|t =<PR_hora> {return nuevo = new Nodo("Tipo",t.image) ;}
+	|t =<PR_fechahora> {return nuevo = new Nodo("Tipo",t.image) ;}
+	|t =<PR_seleccion_uno> val = <IDENTIFIER>{return nuevo = new Nodo(t.image,val.image) ;}
+	|t =<PR_seleccion_multiple> val = <IDENTIFIER>{return nuevo = new Nodo(t.image,val.image) ;}
+	|t =<PR_nota>{return nuevo = new Nodo("Tipo",t.image) ;}
+	|t =<PR_fichero>{return nuevo = new Nodo("Tipo",t.image) ;}
+	|t =<PR_calcular>{return nuevo = new Nodo("Tipo",t.image) ;}
+	|t =<PR_inicio_grupo>{  nuevo = new Nodo("Tipo",t.image) ; nuevo.setGrupo(true); return nuevo;}
+	|t =<PR_finalizar_grupo>{return nuevo =  new Nodo("Tipo",t.image) ;}
+	|t =<PR_finalizar_ciclo>{nuevo = new Nodo("Tipo",t.image) ;  return nuevo;}
+	|t =<PR_iniciar_ciclo>{ nuevo = new Nodo("Tipo",t.image) ; nuevo.setCiclo(true); return nuevo;}
+		
+
+}
+Nodo Cuerpo_Opcion():
+{
+	Nodo nuevo =new Nodo("L_OPCION ","");
+	Nodo t;
+	String cadena="";
+	Nodo val;	
+
+}
+{
+	<PR_NOMBRELISTA> cadena = Etiqueta(nuevo, "") {
+
+			
+				t = nuevo;
+				val = new Nodo("NombreLista", cadena); 
+				t.setListaHojas(val); t.setValor(cadena);
+			}
+		
+
+		
+	
+	<PR_Fin_NOMBRELISTA>
+	<PR_NOMBRE> cadena = Etiqueta(nuevo, "")
+	{
+		val = new Nodo("NOMBRE", cadena); 
+		t.setListaHojas(val);
+	}
+	<PR_Fin_NOMBRE>
+
+	<PR_ETIQUETA>cadena = Etiqueta(nuevo, "")
+	{
+		val = new Nodo("ETIQUETA", cadena); 
+		t.setListaHojas(val);
+	}
+	<PR_Fin_ETIQUETA>
+	(<PR_MULTIMEDIA> cadena = EtiquetaCodigo(nuevo, "")
+	{
+		val = new Nodo("MULTIMEDIA", cadena); 
+		t.setListaHojas(val);
+	}
+	<PR_Fin_MULTIMEDIA>)?
+	{
+		return t;
+	}
+}
+
+Nodo Cuerpo_Config():
+{
+	Nodo nuevo = null;
+	Nodo val;
+	String cadena="";
+}
+{
+	(<PR_IDFORM>cadena = Etiqueta(nuevo, "") { val = new Nodo("IDFORM",cadena); }<PR_Fin_IDFORM>){return val;}
+	|(<PR_TITULOFORM> cadena = Etiqueta(nuevo, "") { val = new Nodo("TITULOFORM",cadena);}<PR_Fin_TITULOFORM>){return val;}
+	|(<PR_ESTILO>cadena = Etiqueta(nuevo, "") { val = new Nodo("ESTILO",cadena); }<PR_Fin_ESTILO>){return val;}
+	|(<PR_IMPORTAR> cadena = EtiquetaCodigo(nuevo, "") { val = new Nodo("IMPORTAR",cadena);}<PR_Fin_IMPORTAR>){return val;}
+	|(<PR_CODIGO_PRINCIPAL> cadena = Etiqueta(nuevo, "") { val = new Nodo("CODIGO_PRINCIPAL",cadena);} <PR_Fin_CODIGO_PRINCIPAL>){return val;}
+	|(<PR_CODIGO_GLOBAL> cadena = Etiqueta(nuevo, "") { val = new Nodo("CODIGO_GLOBAL",cadena); } <PR_Fin_CODIGO_GLOBAL>){return val;}
+	
+}
+
+
+Nodo L_Opcionales(Nodo nodo, String id_preg):
+{
+Nodo nuevo;	
+String cad;
+}
+{
+		(<PR_SUGERIR> cad = Etiqueta(nodo, id_preg) { nuevo = new Nodo("sugerir",cad);} <PR_Fin_SUGERIR>) {return nuevo;}
+	|(<PR_CODIGO_PRE>cad = EtiquetaCodigo(nodo, id_preg) { nuevo = new Nodo("codigo_pre",cad);} <PR_Fin_CODIGO_PRE>){return nuevo;}
+	|(<PR_CODIGO_POST>cad = EtiquetaCodigo(nodo, id_preg) { nuevo = new Nodo("codigo_post",cad);} <PR_Fin_CODIGO_POST>){return nuevo;}
+	|(<PR_RESTRINGIR>cad = Etiqueta(nodo, id_preg) { nuevo = new Nodo("restringir",cad);} <PR_Fin_RESTRINGIR>){return nuevo;}
+	|(<PR_RESTRINGIRMSN>cad = Etiqueta(nodo, id_preg) { nuevo = new Nodo("restringirmsn",cad);} <PR_Fin_RESTRINGIRMSN>){return nuevo;}
+	|(<PR_REQUERIDO>cad = Etiqueta(nodo, id_preg) { nuevo = new Nodo("requerido",cad);} <PR_Fin_REQUERIDO>){return nuevo;}
+	|(<PR_REQUERIDOMSN>cad = Etiqueta(nodo, id_preg) { nuevo = new Nodo("requeridomsn",cad);} <PR_Fin_REQUERIDOMSN>){return nuevo;}
+	|(<PR_PREDETERMINADO>cad = Etiqueta(nodo, id_preg) { nuevo = new Nodo("predeterminado",cad);} <PR_Fin_PREDETERMINADO>){return nuevo;}
+	|(<PR_APLICABLE>cad = Etiqueta(nodo, id_preg) { nuevo = new Nodo("aplicable",cad);} <PR_Fin_APLICABLE>){return nuevo;}
+	|(<PR_LECTURA>cad = Etiqueta(nodo, id_preg) { nuevo = new Nodo("lectura",cad);} <PR_Fin_LECTURA>){return nuevo;}
+	|(<PR_CALCULO>cad = Etiqueta(nodo, id_preg) { nuevo = new Nodo("calculo",cad);} <PR_Fin_CALCULO>){return nuevo;}
+	|(<PR_REPETICION>cad = Etiqueta(nodo, id_preg) { nuevo = new Nodo("repeticion",cad);} <PR_Fin_REPETICION>){return nuevo;}
+	|(<PR_MULTIMEDIA>cad = Etiqueta(nodo, id_preg) { nuevo = new Nodo("multimedia",cad);} <PR_Fin_MULTIMEDIA>){return nuevo;}
+	|(<PR_APARIENCIA>cad = Etiqueta(nodo, id_preg) { nuevo = new Nodo("apariencia",cad);} <PR_Fin_APARIENCIA>){return nuevo;}
+	|(<PR_PARAMETRO>cad = Etiqueta(nodo, id_preg) { nuevo = new Nodo("parametro",cad);} <PR_Fin_PARAMETRO>){return nuevo;}
+	
+}
+//pagina 14
+
+
+<DEFAULT> TOKEN:
+{
+  <ETINI : "/^"> : INICIO_CAD
+}
+
+<INICIO_CAD> TOKEN :
+{
+<POSI : "posicion(" <PuntoP> ")">
+
+|<ID: (["a"-"z","A"-"Z"]("_")?)(["a"-"z","A"-"Z"]|["0"- "9"]|"_")*>
+|<Numeral : "#">
+|<Acor : "[" >
+|<ARRO : "@">
+|<Ccor : "]" >
+|<Punto: ".">
+|<PuntoP: "..">
+|<Cualquiera : (~["#","@",".","^","p", "[", "]"])+ >
+| <ETFIN: "^/"> : DEFAULT
+}
+
+
+
+String  Etiqueta(Nodo nodo, String preg) :
+{String Cad="";
+String aux="";
+}
+
+{
+ <ETINI> (aux = T(nodo, preg){Cad += aux;})*  <ETFIN> { System.out.println(Cad); return Cad;}
+ 
+}
+
+String  EtiquetaCodigo(Nodo nodo, String preg) :
+{String Cad="";
+String aux="";
+}
+
+{
+ <ETINI> (aux = T1(nodo, preg){Cad += aux;})*  <ETFIN> { System.out.println(Cad); return Cad;}
+ 
+}
+
+
+String T1(Nodo nodo, String preg) :
+{Token t;
+Token izquierda;
+Token derecha;
+}
+{
+
+t = <Cualquiera> {  return t.image;}
+| <POSI> {return "posici..";}
+| t= <ID> { return t.image + "";} 
+|LOOKAHEAD(2) <Numeral> <Acor> t=<ID> <Ccor> {  return t.image + " ";}
+|LOOKAHEAD(2) <Numeral> { return "#";}
+| <ARRO> { return preg;}
+| <Punto> {return ".";}
+| <PuntoP> { return nodo.getValor();}
+}
+
+String T(Nodo nodo, String preg) :
+{Token t;}
+{
+
+t = <Cualquiera> {return t.image;}
+| <POSI> {return "posici..";}
+//| LOOKAHEAD(2) <ARRO> {return "padre2";}
+
+| t= <ID> {return t.image + "";} 
+|LOOKAHEAD(2) <Numeral> <Acor> t=<ID> <Ccor> {return t.image + " ";}
+|LOOKAHEAD(2) <Numeral> {return "#";}
+| <ARRO> {return "@";}
+| <Punto> {return preg;}
+
+| <PuntoP> {return nodo.getValor();}
+}
